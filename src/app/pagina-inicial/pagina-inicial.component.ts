@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router'; // Importe o Router
 
 @Component({
   selector: 'app-pagina-inicial',
-  standalone: true,
-  imports: [],
   templateUrl: './pagina-inicial.component.html',
-  styleUrl: './pagina-inicial.component.css'
+  styleUrls: ['./pagina-inicial.component.css'],
+  standalone: true,
 })
 export class PaginaInicialComponent {
+  
+  constructor(private router: Router) {}
 
+  navigateToLogin() {
+    this.router.navigate(['/login']);  
+  }
 }
