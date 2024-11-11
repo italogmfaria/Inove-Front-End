@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "inove": {
+    "Inove-Front-End": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/inove",
+            "outputPath": "dist/inove-front-end",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -23,8 +23,7 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "src/assets", 
-                "output": "/assets"
+                "input": "public"
               }
             ],
             "styles": [
@@ -65,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "inove:build:production"
+              "buildTarget": "Inove-Front-End:build:production"
             },
             "development": {
-              "buildTarget": "inove:build:development"
+              "buildTarget": "Inove-Front-End:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -100,6 +99,6 @@
     }
   },
   "cli": {
-    "analytics": "639f8cfe-554b-4e74-bf84-d54a3fb79627"
+    "analytics": "95cb1e1f-7b3c-4d25-832f-efdb7a0e45c4"
   }
 }
