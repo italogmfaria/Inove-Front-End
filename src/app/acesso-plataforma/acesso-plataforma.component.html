@@ -1,1 +1,45 @@
-<p>acesso-plataforma works!</p>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso à Plataforma - INOVE</title>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <img (click)="navigateTo('/inicial')" src="assets/logowhite.png" alt="Logotipo INOVE" class="logo">
+    </header>
+
+    <!-- Main Content -->
+    <main class="content">
+        <h1>Como acessar a plataforma:</h1>
+
+        <section class="help-section">
+            <h2>Como acessar?</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+        </section>
+
+        <section class="help-section">
+            <h2>Por que usar nossa plataforma?</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+        </section>
+
+        <section class="help-section">
+            <h2>Acesso à plataforma</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+        </section>
+
+        <section class="help-section">
+            <h2>Termos e Condições</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+        </section>
+
+        <!-- Registration Section -->
+        <section class="registration-section">
+            <h2>Formulário para Cadastro de Escola:</h2>
+            <button class="register-btn" (click)="navigateTo('/cadastro-escola')">Cadastrar</button>
+        </section>
+    </main>
+</body>
+</html>

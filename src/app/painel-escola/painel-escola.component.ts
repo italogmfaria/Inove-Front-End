@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-painel-escola',
@@ -8,5 +9,9 @@ import { Component } from '@angular/core';
   styleUrl: './painel-escola.component.css'
 })
 export class PainelEscolaComponent {
+  constructor(private router: Router) {}
 
+  navigateTo(path: string) {
+    this.router.navigate([path]);
+  }
 }

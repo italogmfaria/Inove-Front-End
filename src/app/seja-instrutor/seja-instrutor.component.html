@@ -1,1 +1,45 @@
-<p>seja-instrutor works!</p>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seja um Instrutor</title>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <img (click)="navigateTo('/inicial')" src="assets/logowhite.png" alt="Logotipo INOVE" class="logo">
+    </header>
+
+    <!-- Main Content -->
+    <main class="content">
+        <h1>Seja um instrutor!</h1>
+
+        <section class="info-section">
+            <h2>O que significa ser um Instrutor?</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+        </section>
+
+        <section class="info-section">
+            <h2>Por que ser um Instrutor?</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+        </section>
+
+        <section class="info-section">
+            <h2>Acesso à plataforma</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+        </section>
+
+        <section class="info-section">
+            <h2>Termos e Condições</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+        </section>
+
+        <!-- Call to Action Section -->
+        <section class="cta-section">
+            <p class="cta-text">Preencha seus dados e motivação e envie ao nosso email:</p>
+            <button class="cta-btn" (click)="navigateTo('/cadastro-instrutor')">Preencher</button>
+        </section>
+    </main>
+</body>
+</html>

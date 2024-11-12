@@ -4,7 +4,7 @@
 
 #### Logo do Projeto
 
-![](src/assets/logowhite.png)
+![](src/assets/logo.png)
 
 #### Contextualização
 

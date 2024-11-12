@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-perfil-usuario',
@@ -8,5 +9,9 @@ import { Component } from '@angular/core';
   styleUrl: './perfil-usuario.component.css'
 })
 export class PerfilUsuarioComponent {
+  constructor(private router: Router) {}
 
+  navigateTo(path: string) {
+    this.router.navigate([path]);
+  }
 }

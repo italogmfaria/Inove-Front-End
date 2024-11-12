@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-instrutor',
@@ -8,5 +9,9 @@ import { Component } from '@angular/core';
   styleUrl: './cadastro-instrutor.component.css'
 })
 export class CadastroInstrutorComponent {
+  constructor(private router: Router) {}
 
+  navigateTo(path: string) {
+    this.router.navigate([path]);
+  }
 }
