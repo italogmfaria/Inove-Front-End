@@ -1,1 +1,58 @@
-<p>perfil-usuario works!</p>
+<div class="perfil-container">
+  <!-- Top Bar -->
+  <header class="header">
+    <img src="assets/logowhite.png" alt="Logotipo INOVE" class="logo">
+    <button class="back-btn" onclick="window.history.back();">Voltar</button>
+  </header>
+
+  <div class="content">
+    <!-- Left Panel -->
+    <aside class="side-panel">
+      <h2>Painel do Usuário</h2>
+      <ul>
+        <li (click)="switchPanel('cursos')" [class.active]="activePanel === 'cursos'">Meus Cursos</li>
+        <li (click)="switchPanel('dados')" [class.active]="activePanel === 'dados'">Meus Dados</li>
+      </ul>
+      <button class="btn-orange" (click)="navigateTo('/inicial')">Sair</button>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-panel">
+      <!-- Courses Panel -->
+      <div *ngIf="activePanel === 'cursos'">
+        <h1>Meus Cursos</h1>
+        <div class="course-cards-container">
+          <div class="course-card">
+            <img src="assets/placeholder.png" alt="Curso 1">
+            <h3>Curso 1</h3>
+            <p>Descrição do curso 1.</p>
+          </div>
+          <div class="course-card">
+            <img src="assets/placeholder.png" alt="Curso 2">
+            <h3>Curso 2</h3>
+            <p>Descrição do curso 2.</p>
+          </div>
+          <div class="course-card">
+            <img src="assets/placeholder.png" alt="Curso 3">
+            <h3>Curso 3</h3>
+            <p>Descrição do curso 3.</p>
+          </div>
+          <div class="course-card">
+            <img src="assets/placeholder.png" alt="Curso 4">
+            <h3>Curso 4</h3>
+            <p>Descrição do curso 4.</p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- User Data Panel -->
+      <div *ngIf="activePanel === 'dados'">
+        <h1>Meus Dados</h1>
+        <p><strong>Nome:</strong> {{ user.nome }}</p>
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        <p><strong>CPF:</strong> {{ user.cpf }}</p>
+        <button class="btn-orange">Editar dados</button>
+      </div>      
+    </main>
+  </div>
+</div>

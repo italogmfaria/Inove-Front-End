@@ -91,3 +91,23 @@ body {
 .submit-btn:hover {
     background-color: #e5941e;
 }
+
+/* Back Button */
+.back-btn {
+    background-color: #f9a826;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: absolute;
+    left: -100px; /* Aligns the button to the left */
+    top: 0px;
+    margin: 25px 100px 100px 120px; /* Adds space from the edges */
+}
+
+.back-btn:hover {
+    background-color: #e5941e;
+}

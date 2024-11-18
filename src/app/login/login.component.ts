@@ -20,10 +20,9 @@ export class LoginComponent {
 
   onLogin(event: Event) {
     event.preventDefault();
-    // Aqui você pode integrar com o serviço de autenticação ou back-end
     console.log('E-mail:', this.email);
     console.log('Senha:', this.password);
-    // Exemplo de navegação após login bem-sucedido
+   
     this.router.navigate(['/cursos']);
   }
 }

@@ -6,7 +6,7 @@ import { Router } from '@angular/router';
   standalone: true,
   imports: [],
   templateUrl: './inicial.component.html',
-  styleUrls: ['./inicial.component.css'] // Corrigido o plural de 'styleUrl' para 'styleUrls'
+  styleUrls: ['./inicial.component.css'] 
 })
 export class InicialComponent {
   constructor(private router: Router) {}
@@ -16,6 +16,6 @@ export class InicialComponent {
   }
 
   scrollToTop(): void {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // não funciona
   }
 }
