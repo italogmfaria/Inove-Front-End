@@ -60,9 +60,9 @@ body {
     align-items: center;
     width: 100%;
     padding: 20px;
-    margin-top: 100px; /* Compensates for fixed header */
+    margin-top: 100px; 
     position: relative;
-    z-index: 1; /* Ensures it appears above the background shapes */
+    z-index: 1; 
 }
 
 /* Login Box */
@@ -150,9 +150,9 @@ body {
     cursor: pointer;
     transition: background-color 0.3s;
     position: absolute;
-    left: -100px; /* Aligns the button to the left */
+    left: -100px; 
     top: 0px;
-    margin: 25px 100px 100px 120px; /* Adds space from the edges */
+    margin: 25px 100px 100px 120px; 
 }
 
 .back-btn:hover {

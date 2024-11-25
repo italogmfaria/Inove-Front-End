@@ -1,22 +1,25 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms'; 
+
 
 @Component({
   selector: 'app-perfil-usuario',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './perfil-usuario.component.html',
   styleUrls: ['./perfil-usuario.component.css'],
 })
 export class PerfilUsuarioComponent {
   activePanel: 'cursos' | 'dados' = 'cursos';
+  isEditing: boolean = false; 
 
-  // User data
   user = {
     nome: 'João Silva',
     email: 'joao.silva@example.com',
     cpf: '123.456.789-00',
+    escola:"Escola Municipal Maria Cândida de Jesus",
   };
 
   constructor(private router: Router) {}
@@ -27,5 +30,9 @@ export class PerfilUsuarioComponent {
 
   switchPanel(panel: 'cursos' | 'dados'): void {
     this.activePanel = panel;
+  }
+
+  toggleEdit(): void {
+    this.isEditing = !this.isEditing; 
   }
 }

@@ -26,14 +26,13 @@ body {
     cursor: pointer;
 }
 
-/* Confirmation Message Container */
 .confirmation-container {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
     padding: 20px;
-    margin-top: -200px; /* Offset for the fixed header */
+    margin-top: -200px; 
 }
 
 .confirmation-box {

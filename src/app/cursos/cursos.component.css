@@ -60,7 +60,7 @@ body {
 
 .search-btn {
     position: absolute;
-    left: calc(25% - 30px); /* Adjust for search icon placement */
+    left: calc(25% - 30px); 
     background: none;
     border: none;
     cursor: pointer;
@@ -80,7 +80,7 @@ body {
     color: #fff;
     border: none;
     padding: 10px 20px;
-    border-radius: 20px;
+    border-radius: 5px;
     font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -94,7 +94,7 @@ body {
 .gallery {
     width: 90%;
     max-width: 1200px;
-    margin: 20px auto;
+    margin: 50px auto;
     display: flex;
     flex-direction: column;
 }

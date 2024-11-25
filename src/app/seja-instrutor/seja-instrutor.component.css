@@ -107,9 +107,9 @@ body {
     cursor: pointer;
     transition: background-color 0.3s;
     position: absolute;
-    left: -100px; /* Aligns the button to the left */
+    left: -100px; 
     top: 0px;
-    margin: 25px 100px 100px 120px; /* Adds space from the edges */
+    margin: 25px 100px 100px 120px; 
 }
 
 .back-btn:hover {

@@ -14,8 +14,4 @@ export class InicialComponent {
   navigateTo(path: string) {
     this.router.navigate([path]);
   }
-
-  scrollToTop(): void {
-    window.scrollTo({ top: 0, behavior: 'smooth' }); // não funciona
-  }
 }
