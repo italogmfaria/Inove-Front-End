@@ -18,7 +18,10 @@ export class PainelAdminComponent {
   showUpdateUserModal: boolean = false;
   showSchoolModal: boolean = false;
   showNewSchoolModal: boolean = false;
-  showCourseModal: boolean = false;
+  showAddCourseModal: boolean = false;
+  showUpdateCourseModal: boolean = false;
+  originalCourseTitle: string = '';
+
 
   // Form data for modals
   newUser = { nome: '', email: '', cpf: '', tipo: '', senha: '' };
@@ -43,9 +46,22 @@ export class PainelAdminComponent {
   ];
 
   cursos = [
-    { titulo: 'Curso 1', descricao: 'Descrição do Curso 1', instrutor: 'João Silva' },
-    { titulo: 'Curso 2', descricao: 'Descrição do Curso 2', instrutor: 'Maria Oliveira' },
+    {
+      titulo: 'Curso 1',
+      descricao: 'Descrição do Curso 1',
+      instrutor: 'João Silva',
+      dataCriacao: new Date('2023-11-01'),
+      ultimaAtualizacao: new Date('2023-11-02'),
+    },
+    {
+      titulo: 'Curso 2',
+      descricao: 'Descrição do Curso 2',
+      instrutor: 'Maria Oliveira',
+      dataCriacao: new Date('2023-11-03'),
+      ultimaAtualizacao: new Date('2023-11-03'),
+    },
   ];
+  
 
   constructor(private router: Router) {}
 
@@ -115,24 +131,16 @@ export class PainelAdminComponent {
     this.showSchoolModal = true;
   }
 
-  // Courses Management
-  toggleModal(course?: any): void {
-    if (course) {
-      this.newCourse = { ...course };
-    } else {
-      this.newCourse = { titulo: '', descricao: '', instrutor: '' };
-    }
-    this.showCourseModal = !this.showCourseModal;
-  }
 
   toggleSchoolModal(school?: any): void {
     if (school) {
       this.selectedSchool = { ...school }; 
     } else {
-      this.selectedSchool = { nome: '', email: '', cidade: '', estado: '' }; 
+      this.selectedSchool = { nome: '', email: '', cidade: '', estado: '' }; // Reseta os campos
     }
-    this.showSchoolModal = true;
+    this.showSchoolModal = true; 
   }
+  
   
   closeSchoolModal(): void {
     this.selectedSchool = { nome: '', email: '', cidade: '', estado: '' }; 
@@ -186,58 +194,52 @@ export class PainelAdminComponent {
   }
   
   updateSchool(): void {
-    const index = this.escolas.findIndex((e) => e.nome === this.selectedSchool.nome);
-    if (index >= 0) {
-      this.escolas[index] = { ...this.selectedSchool };
+    const index = this.escolas.findIndex(
+      (e) => e.email === this.selectedSchool.email
+    );
+  
+    if (index !== -1) {
+      this.escolas[index] = {
+        ...this.escolas[index], 
+        nome: this.selectedSchool.nome.trim(), 
+        cidade: this.selectedSchool.cidade.trim(), 
+        estado: this.selectedSchool.estado.trim(), 
+      };
+  
       alert('Escola atualizada com sucesso!');
       this.closeSchoolModal();
     } else {
-      alert('Erro ao atualizar escola.');
+      alert('Erro: Escola não encontrada.');
     }
   }
   
-  toggleCourseModal(course?: any): void {
-    if (course) {
-      this.newCourse = { ...course }; 
-    } else {
-      this.newCourse = { titulo: '', descricao: '', instrutor: '' }; 
-    }
-    this.showCourseModal = true;
+  
+    // Abrir modal para adicionar novo curso
+  openAddCourseModal(): void {
+    this.newCourse = { titulo: '', descricao: '', instrutor: '' };
+    this.showAddCourseModal = true;
+  }
+
+  // Fechar modal de adicionar curso
+  closeAddCourseModal(): void {
+    this.newCourse = { titulo: '', descricao: '', instrutor: '' };
+    this.showAddCourseModal = false;
+  }
+
+  // Abrir modal para atualizar curso
+  openUpdateCourseModal(curso: any): void {
+    this.selectedCourse = { ...curso }; 
+    this.originalCourseTitle = curso.titulo; 
+    this.showUpdateCourseModal = true; 
   }
   
-  closeCourseModal(): void {
-    this.newCourse = { titulo: '', descricao: '', instrutor: '' }; 
-    this.showCourseModal = false;
+
+  // Fechar modal de atualizar curso
+  closeUpdateCourseModal(): void {
+    this.selectedCourse = { titulo: '', descricao: '', instrutor: '' };
+    this.showUpdateCourseModal = false;
   }
-  
-  addCourse(): void {
-    if (
-      this.newCourse.titulo &&
-      this.newCourse.descricao &&
-      this.newCourse.instrutor
-    ) {
-      const exists = this.cursos.some((c) => c.titulo === this.newCourse.titulo);
-      if (!exists) {
-        this.cursos.push({ ...this.newCourse });
-      } else {
-        alert('Já existe um curso com esse título.');
-      }
-      this.closeCourseModal();
-    } else {
-      alert('Por favor, preencha todos os campos.');
-    }
-  }
-  
-  updateCourse(): void {
-    const index = this.cursos.findIndex((c) => c.titulo === this.newCourse.titulo);
-    if (index >= 0) {
-      this.cursos[index] = { ...this.newCourse };
-      alert('Curso atualizado com sucesso!');
-      this.closeCourseModal();
-    } else {
-      alert('Erro ao atualizar curso.');
-    }
-  }
+
   
   deleteItem(category: 'usuarios' | 'escolas' | 'cursos', index: number): void {
     const confirmDelete = confirm('Tem certeza que deseja excluir este item?');
@@ -252,6 +254,49 @@ export class PainelAdminComponent {
     }
   }
   
+    // Adicionar curso
+  addCourse(): void {
+    if (this.newCourse.titulo && this.newCourse.descricao && this.newCourse.instrutor) {
+      const exists = this.cursos.some((c) => c.titulo === this.newCourse.titulo);
+      if (!exists) {
+        this.cursos.push({
+          ...this.newCourse,
+          dataCriacao: new Date(),
+          ultimaAtualizacao: new Date(),
+        });
+        alert('Curso adicionado com sucesso!');
+        this.closeAddCourseModal();
+      } else {
+        alert('Já existe um curso com esse título.');
+      }
+    } else {
+      alert('Por favor, preencha todos os campos.');
+    }
+  }
+
+  // Atualizar curso
+  updateCourse(): void {
+    const index = this.cursos.findIndex(
+      (c) => c.titulo === this.originalCourseTitle
+    );
+  
+    if (index !== -1) {
+      this.cursos[index] = {
+        ...this.cursos[index], 
+        titulo: this.selectedCourse.titulo.trim(), 
+        descricao: this.selectedCourse.descricao.trim(), 
+        instrutor: this.selectedCourse.instrutor, 
+        ultimaAtualizacao: new Date(), 
+      };
+  
+      alert('Curso atualizado com sucesso!');
+      this.closeUpdateCourseModal(); 
+    } else {
+      alert('Erro: Curso não encontrado.');
+    }
+  }
+  
+
 
   // Utility
   private resetNewUser(): void {

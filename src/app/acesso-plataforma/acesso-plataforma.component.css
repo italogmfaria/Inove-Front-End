@@ -44,6 +44,7 @@ body {
 /* Help Section */
 .help-section {
     margin-bottom: 20px;
+    margin-right: 40px;
 }
 
 .help-section h2 {
@@ -54,6 +55,7 @@ body {
 }
 
 .help-section p {
+    text-align: justify;
     font-size: 1em;
     color: #555;
     margin-bottom: 15px;

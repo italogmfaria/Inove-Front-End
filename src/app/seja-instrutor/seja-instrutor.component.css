@@ -51,7 +51,7 @@ body {
 /* Info Sections */
 .info-section {
     margin-bottom: 20px;
-    text-align: left;
+    text-align: justify;
 }
 
 .info-section h2 {

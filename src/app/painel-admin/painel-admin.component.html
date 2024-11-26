@@ -87,22 +87,27 @@
               <th>Título</th>
               <th>Descrição</th>
               <th>Instrutor</th>
+              <th>Data de Criação</th>
+              <th>Última Atualização</th>
               <th>Ações</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let curso of cursos; let i = index">              <td>{{ curso.titulo }}</td>
+            <tr *ngFor="let curso of cursos; let i = index">
+              <td>{{ curso.titulo }}</td>
               <td>{{ curso.descricao }}</td>
               <td>{{ curso.instrutor }}</td>
+              <td>{{ curso.dataCriacao | date: 'dd/MM/yyyy' }}</td>
+              <td>{{ curso.ultimaAtualizacao | date: 'dd/MM/yyyy' }}</td>
               <td>
-                <button class="btn-blue" (click)="toggleModal(curso)">Atualizar</button>
+                <button class="btn-blue" (click)="openUpdateCourseModal(curso)">Atualizar</button>
                 <button class="btn-red" (click)="deleteItem('cursos', i)">Excluir</button>
               </td>
             </tr>
-          </tbody>
+          </tbody>          
         </table>
         <br>
-        <button class="btn-orange add-course-btn" (click)="toggleModal()">Adicionar Novo Curso</button>
+        <button class="btn-orange" (click)="openAddCourseModal()">Adicionar Novo Curso</button>
       </div>
     </main>
   </div>
@@ -143,8 +148,8 @@
       <span class="close-btn" (click)="closeUserModals()">&#10005;</span>
     </header>
     <div class="modal-body">
-      <input type="text" [(ngModel)]="selectedUser.nome" placeholder="Nome" />
-      <input type="email" [(ngModel)]="selectedUser.email" placeholder="Email" />
+      <input type="text" [(ngModel)]="selectedUser.nome" placeholder="Nome" readonly/>
+      <input type="email" [(ngModel)]="selectedUser.email" placeholder="Email" readonly/>
       <input type="text" [(ngModel)]="selectedUser.cpf" placeholder="CPF" readonly />
       <div class="custom-select">
         <label for="userType">Tipo de Usuário</label>
@@ -171,10 +176,10 @@
   </header>
   <div class="modal-body">
     <input type="text" [(ngModel)]="selectedSchool.nome" placeholder="Nome" />
-    <input type="email" [(ngModel)]="selectedSchool.email" placeholder="Email" />
+    <input type="email" [(ngModel)]="selectedSchool.email" placeholder="Email" readonly />
     <input type="text" [(ngModel)]="selectedSchool.cidade" placeholder="Cidade" />
     <input type="text" [(ngModel)]="selectedSchool.estado" placeholder="Estado" />
-  </div>
+  </div>  
   <footer class="modal-footer">
     <button class="btn-orange" (click)="selectedSchool.nome ? updateSchool() : addSchool()">Salvar</button>
   </footer>
@@ -199,12 +204,12 @@
   </footer>
 </div>
 
-<!-- Curso Modal -->
-<div class="modal-overlay" *ngIf="showCourseModal" (click)="closeCourseModal()"></div>
-<div class="modal" *ngIf="showCourseModal">
+<!-- Modal para Adicionar Novo Curso -->
+<div class="modal-overlay" *ngIf="showAddCourseModal" (click)="closeAddCourseModal()"></div>
+<div class="modal" *ngIf="showAddCourseModal">
   <header class="modal-header">
-    <h2>{{ newCourse.titulo ? 'Atualizar Curso' : 'Adicionar Novo Curso' }}</h2>
-    <span class="close-btn" (click)="closeCourseModal()">&#10005;</span>
+    <h2>Adicionar Novo Curso</h2>
+    <span class="close-btn" (click)="closeAddCourseModal()">&#10005;</span>
   </header>
   <div class="modal-body">
     <input type="text" [(ngModel)]="newCourse.titulo" placeholder="Título" />
@@ -220,7 +225,33 @@
     </div>
   </div>
   <footer class="modal-footer">
-    <button class="btn-orange" (click)="newCourse.titulo ? updateCourse() : addCourse()">Salvar</button>
+    <button class="btn-orange" (click)="addCourse()">Salvar</button>
   </footer>
 </div>
+
+<!-- Modal para Atualizar Curso -->
+<div class="modal-overlay" *ngIf="showUpdateCourseModal" (click)="closeUpdateCourseModal()"></div>
+<div class="modal" *ngIf="showUpdateCourseModal">
+  <header class="modal-header">
+    <h2>Atualizar Curso</h2>
+    <span class="close-btn" (click)="closeUpdateCourseModal()">&#10005;</span>
+  </header>
+  <div class="modal-body">
+    <input type="text" [(ngModel)]="selectedCourse.titulo" placeholder="Título" />
+    <textarea [(ngModel)]="selectedCourse.descricao" placeholder="Descrição"></textarea>
+    <div class="custom-select">
+      <label for="instructorSelect">Instrutor</label>
+      <select id="instructorSelect" [(ngModel)]="selectedCourse.instrutor">
+        <option value="" disabled selected>Defina o instrutor do curso</option>
+        <option *ngFor="let instrutor of instrutores" [value]="instrutor.nome">
+          {{ instrutor.nome }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <footer class="modal-footer">
+    <button class="btn-orange" (click)="updateCourse()">Salvar</button>
+  </footer>
+</div>
+
 
