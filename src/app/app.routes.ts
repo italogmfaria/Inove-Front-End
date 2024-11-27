@@ -14,6 +14,7 @@ import { SejaInstrutorComponent } from './seja-instrutor/seja-instrutor.componen
 import { PainelCursoComponent } from './painel-curso/painel-curso.component';
 import { PainelInstrutorComponent } from './painel-instrutor/painel-instrutor.component';
 import { CadastroSecaoComponent } from './cadastro-secao/cadastro-secao.component';
+import { PreviewCursoComponent } from './preview-curso/preview-curso.component';
 
 export const routes: Routes = [
   { path: '', component: InicialComponent },
@@ -21,6 +22,7 @@ export const routes: Routes = [
   { path: 'cursos', component: CursosComponent },
   { path: 'perfil-usuario', component: PerfilUsuarioComponent },
   { path: 'painel-curso', component: PainelCursoComponent },
+  { path: 'preview-curso', component: PreviewCursoComponent },
   { path: 'painel-admin', component: PainelAdminComponent },
   { path: 'painel-instrutor', component: PainelInstrutorComponent },
   { path: 'cadastro-escola', component: CadastroEscolaComponent },

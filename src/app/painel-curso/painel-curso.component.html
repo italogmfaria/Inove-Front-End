@@ -60,15 +60,14 @@
     <p><strong>Data de Criação:</strong> {{ courseCreationDate | date: 'dd/MM/yyyy' }}</p>
     <p><strong>Última Atualização:</strong> {{ lastUpdateDate | date: 'dd/MM/yyyy' }}</p>
 
-    <div class="comments">
-      <h3>Comentários:</h3>
-      <ul>
-        <li *ngFor="let comment of comments">
-          <p><strong>{{ comment.user }}:</strong><br />{{ comment.text }}</p>
-        </li>
-      </ul>
+  <!-- Comments Section -->
+  <section class="comments-section">
+    <h2 class="comments-title">Comentários:</h2><br>
+    <div class="comment" *ngFor="let comment of comments">
+      <p class="comment-user"><strong>{{ comment.user }}</strong></p>
+      <p class="comment-text">{{ comment.text }}</p>
     </div>
-  </footer>
+  </section>
 
   <!-- Comment Section -->
   <div class="comment-section">
@@ -83,4 +82,3 @@
     </div>
     <br><br>
   </div>
-</div>

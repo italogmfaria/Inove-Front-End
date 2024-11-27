@@ -45,8 +45,8 @@ export class PainelCursoComponent {
   courseTitle = 'NOME DO CURSO';
   description = 'Este é um exemplo de uma descrição de um curso.';
   instructor = 'João Silva';
-  courseCreationDate: Date = new Date('2023-11-01'); 
-  lastUpdateDate: Date = new Date('2023-11-05'); 
+  courseCreationDate: Date = new Date('2024-11-26'); 
+  lastUpdateDate: Date = new Date('2024-11-27'); 
 
   
   currentContentUrl: string = 'https://www.youtube.com/embed/kQxQQOj2Wg8';
